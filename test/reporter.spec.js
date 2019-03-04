@@ -63,7 +63,8 @@ describe('spec reporter', () => {
         it('should increase indent', () => {
             reporter.emit('suite:start', {
                 cid: 42,
-                uid: '123'
+                uid: '123',
+                title: 'suite name'
             })
             reporter.suiteIndents[42][123].should.equal(1)
             reporter.indents[42].should.equal(1)
@@ -82,7 +83,8 @@ describe('spec reporter', () => {
     describe('the test:pending event', () => {
         it('should increase pending tests', () => {
             reporter.emit('test:pending', {
-                cid: 42
+                cid: 42,
+                title: 'pending test name'
             })
             reporter.results[42].pending.should.equal(1)
         })
@@ -91,7 +93,8 @@ describe('spec reporter', () => {
     describe('the test:pass event', () => {
         it('should increase passing tests', () => {
             reporter.emit('test:pass', {
-                cid: 42
+                cid: 42,
+                title: 'passing test name'
             })
             reporter.results[42].passing.should.equal(1)
         })
@@ -100,7 +103,8 @@ describe('spec reporter', () => {
     describe('the test:fail event', () => {
         it('should increase failing tests', () => {
             reporter.emit('test:fail', {
-                cid: 42
+                cid: 42,
+                title: 'failing test name'
             })
             reporter.results[42].failing.should.equal(1)
         })
